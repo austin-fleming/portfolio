@@ -1,0 +1,12 @@
+{
+  "name": "portfolio",
+  "version": "0.0.1",
+  "description": "Austin's portfolio website",
+  "repository": "https://github.com/flimflam-austin/portfolio.git",
+  "author": "flimflam-austin <68439674+flimflam-austin@users.noreply.github.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}
