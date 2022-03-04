@@ -1,0 +1,35 @@
+const testingOverride = {
+  files: ["**/*.spec.ts", "**/*.test.ts"],
+  plugins: ["jest"],
+  env: {
+    "jest/globals": true,
+  },
+  extends: ["plugin:jest/recommended", "plugin:jest/style"],
+};
+
+module.exports = {
+  root: true,
+  env: {
+    es6: true,
+    node: true,
+  },
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    sourceType: "module",
+    project: ["./tsconfig.json", "./packages/*/tsconfig.json"],
+    tsconfigRootDir: __dirname,
+  },
+  plugins: ["@typescript-eslint", "no-secrets", "sonarjs", "unicorn", "no-unsanitized"],
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:sonarjs/recommended",
+    "plugin:no-unsanitized/DOM",
+    "plugin:unicorn/all",
+  ],
+  rules: {
+    "no-secrets/no-secrets": "error",
+    "unicorn/prefer-module": "off",
+  },
+  overrides: [testingOverride],
+};

@@ -1,0 +1,41 @@
+// REF: Unique ids: https://arctype.com/blog/postgres-uuid/
+// REF: Examples: https://www.graphile.org/postgraphile/postgresql-schema-design/#the-post-table
+// REF: https://nikofischer.com/supabase-how-to-query-users-table
+// REF: https://shipsaas.com/blog/get-started-with-nextjs-supabase-part-3
+// REF: https://github.com/shuber/postgres-twitter
+
+// Editor/User should have uuid as it identifies a person
+Editor:
+    CREATE TABLE EDITOR (
+        id uuid DEFAULT uuid_generate_v4 (),
+        PRIMARY KEY (id),
+        Role - enum: 'owner', 'editor'
+    );
+
+// Posts are fine being serial, unless they need to be monetized (people might skirt paywall?)
+Post:
+    CREATE TABLE POST (
+        Type - enum: 'portfolio', 'editorial'
+    )
+
+Case Studies:
+    CREATE TABLE CASE_STUDIES (
+        id SERIAL PRIMARY KEY,
+        author_id
+    )
+
+
+
+* Authors
+    * id
+    * name
+    * email
+    * password
+    * profile image
+
+* Blog
+    * _createdAt
+    * _modifiedAt
+    * datePublished
+    * dateUpdated
+    * content
