@@ -4,8 +4,7 @@ import { statusCodes } from '@lib/response-codes';
 import { fetchCaseStudies } from '@db/fetch-case-studies';
 
 caseStudyRouter.get('/case-studies', async (request, response) => {
-    
-    const {data: caseStudies, error} = await fetchCaseStudies()
+    const { data: caseStudies, error } = await fetchCaseStudies();
 
     if (error) {
         console.error(error);
