@@ -4,24 +4,30 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "checkup": "audit",
-    "dev": "npx nodemon dist/server.js",
-    "watch": "tsc -w",
-    "dev2": "node dist/server.js",
-    "build": "tsc",
-    "test": "echo \"Still need to add a testing library, dummy!\" && exit 1"
+    "build": "esbuild --bundle --platform=node src/server.ts --outfile=dist/server.js --external:express",
+    "build::prod": "yarn build --minify",
+    "build::dev": "yarn build --sourcemap",
+    "dev": "nodemon",
+    "test": "echo \"Still need to add a testing library, dummy!\" && exit 1",
+    "checkup": "audit"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
     "@types/node": "^17.0.21",
     "nodemon": "^2.0.15",
     "ts-node": "^10.6.0",
-    "typescript": "^4.6.2"
+    "typescript": "^4.6.2",
+    "esbuild": "^0.14.25",
+    "@types/cors": "^2.8.12"
   },
   "dependencies": {
     "@supabase/supabase-js": "^1.30.7",
+    "body-parser": "^1.19.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "express-rate-limit": "^6.3.0",
+    "helmet": "^5.0.2",
     "pg": "^8.7.3"
   }
 }

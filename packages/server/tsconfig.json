@@ -3,7 +3,21 @@
     "compilerOptions": {
         "target": "ES6",
         "outDir": "./dist",
-        "baseUrl": "."
+        "baseUrl": ".",
+        "paths": {
+            "@db/*": [
+                "src/db/*"
+            ],
+            "@lib/*": [
+                "src/lib/*"
+            ],
+            "@middleware/*": [
+                "src/middleware/*"
+            ],
+            "@routes/*": [
+                "src/routes/*"
+            ]
+        }
     },
     "include": ["src/**/*", "./.eslintrc.js"],
     "exclude": ["node_modules"]

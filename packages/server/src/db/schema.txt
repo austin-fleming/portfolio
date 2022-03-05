@@ -26,16 +26,36 @@ Case Studies:
 
 
 
-* Authors
-    * id
-    * name
-    * email
-    * password
-    * profile image
+* Author
+    * id            UUID
+    * name          TEXT
+    * email         TEXT
+    * password      TEXT
+    * profile image BUCKET REF
 
-* Blog
-    * _createdAt
-    * _modifiedAt
-    * datePublished
-    * dateUpdated
-    * content
+* Case Study
+    * id            UUID
+    * is_published  BOOL
+    * _createdAt    TIMESTAMPTZ
+    * _modifiedAt   TIMESTAMPTZ
+    * datePublished TIMESTAMPTZ
+    * dateUpdated   TIMESTAMPTZ
+
+    * author        author.id
+    * coauthors     author.id[]
+
+    * title         TEXT
+    * summary       TEXT
+    * content       TEXT
+
+* Favorite Links
+    * id            UUID
+    * author        author.id
+    * coauthors     author.id[]
+    * tags          tag.id[]
+    * title         TEXT
+    * summary       TEXT
+    * link          TEXT (pguri)
+    * preview_image BUCKET REF
+    * _createdAt    TIMESTAMPTZ
+    * _modifiedAt   TIMESTAMPTZ
