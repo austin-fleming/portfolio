@@ -5,5 +5,6 @@ export const statusCodes = {
     'MOVED_TEMPORARILY': 302,
     'FORBIDDEN': 403,
     'NOT_FOUND': 404,
-    'GONE': 410
+    'GONE': 410,
+    'TEAPOT': 418
 }
