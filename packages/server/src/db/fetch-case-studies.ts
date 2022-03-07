@@ -17,3 +17,4 @@ export const fetchCaseStudyById = async (id: string) =>
         .from<ExpandedCaseStudy>('case_study')
         .select(expandedCaseStudyQuery)
         .eq('id', id)
+        .single();

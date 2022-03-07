@@ -8,6 +8,7 @@ import cors = require('cors');
 import { jsonFromBody } from '@middleware/json-from-body';
 import { HOST, PORT } from './config/constants';
 import { homeRouter } from '@routes/home';
+import { noteRouter } from '@routes/notes';
 
 const app = express();
 
@@ -16,8 +17,8 @@ const corsOptions = {
     origin: '*',
     credentials: true,
     optionSuccessStatus: 200
-}
-app.use(cors(corsOptions))
+};
+app.use(cors(corsOptions));
 
 // app.use(helmet());
 // app.use(cors);
@@ -32,6 +33,7 @@ ROUTES
 */
 app.use(homeRouter);
 app.use(caseStudyRouter);
+app.use(noteRouter); // TODO: remove this tester
 
 app.listen(PORT, () => {
     console.log('server ready on port:', HOST);

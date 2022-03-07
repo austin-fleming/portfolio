@@ -17,6 +17,7 @@
         "editor.formatOnSave": true,
     },
     "cSpell.words": [
+        "supabase",
         "sveltejs",
         "tailwindcss",
         "VITE"

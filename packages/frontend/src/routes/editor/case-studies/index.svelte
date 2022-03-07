@@ -27,7 +27,7 @@
 	<section class="w-1/4 min-w-[300px] bg-slate-200 p-4">
 		<h1>Case Studies</h1>
 		{#if contentLoading}
-			<span>...loading</span>
+			<span>loading...</span>
 		{:else}
 			{#each caseStudies as caseStudy}
 				<article class="w-full bg-slate-400 rounded overflow-hidden p-4 text-sm">

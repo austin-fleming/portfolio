@@ -9,6 +9,12 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "dev::frontend": "cd packages/frontend && yarn dev",
+    "dev::server": "cd packages/server && yarn dev",
+    "frontend": "yarn workspace frontend",
+    "server": "yarn workspace server"
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^5.13.0",
