@@ -11,6 +11,14 @@ import { homeRouter } from '@routes/home';
 
 const app = express();
 
+// TODO: refine before deployment
+const corsOptions = {
+    origin: '*',
+    credentials: true,
+    optionSuccessStatus: 200
+}
+app.use(cors(corsOptions))
+
 // app.use(helmet());
 // app.use(cors);
 // app.use(bodyParser.json());

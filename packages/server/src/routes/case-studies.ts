@@ -19,18 +19,19 @@ caseStudyRouter.get('/case-studies', async (request, response) => {
     }
 
     if (!caseStudies || caseStudies.length === 0) {
-        response
-            .status(statusCodes.NOT_FOUND)
-            .json({
-                message: 'Not Found. No case studies have been added... yet.'
-            });
+        response.status(statusCodes.NOT_FOUND).json({
+            message: 'Not Found. No case studies have been added... yet.'
+        });
 
         return;
     }
 
-    response.status(statusCodes.OK).json({ data: caseStudies, links: {
-        'case studies by id': 'case-studies/:id'
-    } });
+    response.status(statusCodes.OK).json({
+        data: caseStudies,
+        links: {
+            'case studies by id': 'case-studies/:id'
+        }
+    });
 });
 
 caseStudyRouter.all('/case-studies', (_, response) => {
@@ -61,11 +62,9 @@ caseStudyRouter.get('/case-studies/:id', async (request, response) => {
     }
 
     if (!caseStudy || caseStudy.length === 0) {
-        response
-            .status(statusCodes.NOT_FOUND)
-            .json({
-                message: 'Not Found. No case studies match the requested ID.'
-            });
+        response.status(statusCodes.NOT_FOUND).json({
+            message: 'Not Found. No case studies match the requested ID.'
+        });
 
         return;
     }

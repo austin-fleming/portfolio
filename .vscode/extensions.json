@@ -1,6 +1,8 @@
 {
     "recommendations": [
         "wix.vscode-import-cost",
-        "eamodio.gitlens"
+        "eamodio.gitlens",
+        "bradlc.vscode-tailwindcss",
+        "svelte.svelte-vscode"
     ]
 }

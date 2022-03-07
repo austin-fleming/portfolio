@@ -4,7 +4,7 @@ const testingOverride = {
   env: {
     "jest/globals": true,
   },
-  extends: ["plugin:jest/recommended", "plugin:jest/style"],
+  extends: ["plugin:jest/recommended", "plugin:jest/style"]
 };
 
 module.exports = {
@@ -19,13 +19,14 @@ module.exports = {
     project: ["./tsconfig.json", "./packages/*/tsconfig.json"],
     tsconfigRootDir: __dirname,
   },
-  plugins: ["@typescript-eslint", "no-secrets", "sonarjs", "unicorn", "no-unsanitized"],
+  plugins: ["@typescript-eslint", "no-secrets", "sonarjs", "unicorn", "no-unsanitized", "security"],
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:sonarjs/recommended",
     "plugin:no-unsanitized/DOM",
     "plugin:unicorn/all",
+    "plugin:security/recommended"
   ],
   rules: {
     "no-secrets/no-secrets": "error",
