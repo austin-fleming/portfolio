@@ -1,18 +1,3 @@
-<style>
-	form {
-		margin: auto;
-		width: 100%;
-		max-width: 600px;
-	}
-
-	.field {
-		@apply w-full;
-	}
-	.field__input {
-		@apply w-full border-[1px] border-solid border-slate-300 p-2;
-	}
-</style>
-
 <script lang="ts">
 	import Fieldset from '$components/forms/Fieldset.svelte';
 	import FieldLabel from '$components/forms/FieldLabel.svelte';
@@ -181,3 +166,17 @@
 		</form>
 	</section>
 </div>
+
+<style>
+	form {
+		margin: auto;
+		width: 100%;
+		max-width: 600px;
+	}
+	.field {
+		@apply w-full;
+	}
+	.field__input {
+		@apply w-full border-[1px] border-solid border-slate-300 p-2;
+	}
+</style>
