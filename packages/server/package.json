@@ -18,7 +18,8 @@
     "ts-node": "^10.6.0",
     "typescript": "^4.6.2",
     "esbuild": "^0.14.25",
-    "@types/cors": "^2.8.12"
+    "@types/cors": "^2.8.12",
+    "@repo/shared": "*"
   },
   "dependencies": {
     "@supabase/supabase-js": "^1.30.7",

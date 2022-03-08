@@ -1,3 +1,4 @@
+export * from './change-type-of-keys';
 export * from './is-just';
 export * from './is-nothing';
 export * from './is-value';

@@ -1,4 +1,4 @@
-import type { ChangeTypeOfKeys } from '@lib/types/helpers';
+import type { ChangeTypeOfKeys } from '@repo/shared';
 
 export type Timestamp = string;
 
