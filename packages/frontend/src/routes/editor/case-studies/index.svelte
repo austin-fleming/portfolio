@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Fieldset from '$components/forms/Fieldset.svelte';
-	import FieldLabel from '$components/forms/FieldLabel.svelte';
-	import { fetchCaseStudies } from './../../../db/fetchCaseStudies';
+	import Fieldset from '$components/forms/field-set.svelte';
+	import FieldLabel from '$components/forms/field-label.svelte';
+	import { fetchCaseStudies } from '../../../db/fetch-case-studies';
 	import { onMount } from 'svelte';
-	import { formattedDateFromTimeStamp } from '$lib/dates/formatDate';
+	import { formattedDateFromTimeStamp } from '$lib/dates/format-date';
 
 	let formData = {
 		authors: [],

@@ -1,0 +1,25 @@
+{
+    "extends": "./../../tsconfig.json",
+    "compilerOptions": {
+        "target": "ES6",
+        "lib": [
+            "ESNEXT"
+        ],
+        "outDir": "dist",
+        "baseUrl": ".",
+        "paths": {
+            "@helpers/*": [
+                "src/helpers/*"
+            ]
+        },
+        "declaration": true,
+        "sourceMap": true,
+        "rootDir": ".",
+        "composite": true,
+        "noEmit": false
+    },
+    "include": [
+        "index.ts",
+        "src/**/*.ts"
+    ]
+}

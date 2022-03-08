@@ -21,8 +21,22 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "target": "ES6"
+    "target": "ES6",
+    "rootDir": ".",
+    "types": [
+      "jest",
+      "node"
+    ],
+    "paths": {
+      "@repo/*": [
+        "./packages/*/src"
+      ]
+    }
   },
-  "include": [".eslintrc.js"],
-  "exclude": ["node_modules"]
+  "include": [
+    ".eslintrc.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

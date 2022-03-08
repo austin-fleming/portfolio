@@ -6,7 +6,7 @@ const svelteOverrides = {
 
 module.exports = {
 	extends: ['../../.eslintrc.js'],
-	ignorePatterns: ['node_modules'],
+	ignorePatterns: ['node_modules', '.eslintrc.cjs'],
 	plugins: ['svelte3'],
 	overrides: [svelteOverrides],
 	settings: {
@@ -16,7 +16,7 @@ module.exports = {
 	parserOptions: {
 		sourceType: 'module',
 		ecmaVersion: 2020,
-		extraFileExtensions: ['.svelte'],
+		extraFileExtensions: ['.svelte', '.cjs'],
 		sourceType: 'module',
 		tsconfigRootDir: __dirname,
 		project: ['./tsconfig.json']
@@ -24,6 +24,6 @@ module.exports = {
 	env: {
 		browser: true,
 		es6: true,
-		node: false
+		node: true
 	}
 };

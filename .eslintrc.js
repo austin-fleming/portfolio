@@ -4,7 +4,13 @@ const testingOverride = {
   env: {
     "jest/globals": true,
   },
-  extends: ["plugin:jest/recommended", "plugin:jest/style"]
+  extends: ["plugin:jest/recommended", "plugin:jest/style"],
+  rules: {
+    'unicorn/no-null': 'off',
+    'unicorn/no-useless-undefined': 'off',
+    'unicorn/no-array-for-each': 'off',
+    'unicorn/prefer-number-properties': 'off'
+  }
 };
 
 module.exports = {

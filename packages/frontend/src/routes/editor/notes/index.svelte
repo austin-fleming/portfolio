@@ -1,9 +1,9 @@
 <script lang="ts">
-	import FieldLabel from '$components/forms/FieldLabel.svelte';
-	import Fieldset from '$components/forms/Fieldset.svelte';
-	import { fetchNotes } from '../../../db/fetchNotes';
+	import FieldLabel from '$components/forms/field-label.svelte';
+	import Fieldset from '$components/forms/field-set.svelte';
+	import { fetchNotes } from '../../../db/fetch-notes';
 	import { onMount } from 'svelte';
-	import { formattedDateFromTimeStamp } from '$lib/dates/formatDate';
+	import { formattedDateFromTimeStamp } from '$lib/dates/format-date';
 
 	let notes: [];
 	let notesLoading = true;
