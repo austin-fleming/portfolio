@@ -9,7 +9,8 @@ const testingOverride = {
     'unicorn/no-null': 'off',
     'unicorn/no-useless-undefined': 'off',
     'unicorn/no-array-for-each': 'off',
-    'unicorn/prefer-number-properties': 'off'
+    'unicorn/prefer-number-properties': 'off',
+    'unicorn/consistent-function-scoping': 'off'
   }
 };
 
