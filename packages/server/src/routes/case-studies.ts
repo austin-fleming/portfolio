@@ -5,6 +5,41 @@ import { fetchCaseStudies, fetchCaseStudyById } from '@db/fetch-case-studies';
 import type { Uuid } from '@db/types';
 import { isMaybeUuid } from '@lib/validation/validate-uuid';
 
+/* 
+    should version this. i.e.: /v1/case-studies
+*/
+
+/* 
+    get:    get-info; safe, idempotent 
+    post:   create new item
+    put:    update existing item. Updates the ENTIRE item. More like "replace" without changing row id.
+    patch:  update part of an item.
+
+
+*/
+
+/* 
+    /case-studies
+    /case-studies?order=""&limit=""&offset=""
+        params:
+            order:  (date) 'date'
+            tag:    string
+            limit:  (10) number
+            offset: (0) number
+
+
+    /case-studies/:id
+*/
+
+/* 
+    error: {
+        message:    string,
+        type:       errorType,
+        code:       errorNumber
+    }
+
+*/
+
 caseStudyRouter.get('/case-studies', async (request, response) => {
     const { data: caseStudies, error } = await fetchCaseStudies();
 
@@ -26,12 +61,13 @@ caseStudyRouter.get('/case-studies', async (request, response) => {
         return;
     }
 
-    response.status(statusCodes.OK).json({
+    response.status(statusCodes.OK).json(caseStudies);
+    /* response.status(statusCodes.OK).json({
         data: caseStudies,
         links: {
             'case studies by id': 'case-studies/:id'
         }
-    });
+    }); */
 });
 
 caseStudyRouter.all('/case-studies', (_, response) => {
