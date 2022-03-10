@@ -26,13 +26,13 @@ title							text				NOT NULL
 summary						text				NOT NULL
 body							text				NOT NULL
 
-feature_image			jsonb				NOT NULL
-feature_video			jsonb
+feature_image			jsonb[]			NOT NULL
+feature_video			jsonb[]
 
 completion_period	text
 project_status		text
 client						text
-tools							text
+tools							text[]
 categories				text[]			NOT NULL
 note							text
 */
@@ -51,8 +51,8 @@ export type CaseStudy = {
 	title: string;
 	summary: string;
 	body: ArticleContent;
-	feature_image: Image;
-	feature_video?: EmbedVideo;
+	feature_image: Image[];
+	feature_video?: EmbedVideo[];
 	// details
 	completion_period?: string;
 	project_status?: string;
