@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { ExpandedCaseStudy } from '@repo/db';
+import type { ExpandedCaseStudy, CaseStudy } from '@repo/db';
 
 // TODO: DRY-ify
 type ServerResponse = {
@@ -16,7 +16,7 @@ const SERVER_HOST = import.meta.env.PROD
 export const fetchCaseStudies = async () => {
 	// TODO: sanitization
 	try {
-		const response = await axios.get<ExpandedCaseStudy[]>(`${SERVER_HOST}/case-studies/`);
+		const response = await axios.get<CaseStudy[]>(`${SERVER_HOST}/case-studies/`);
 		console.log({ response });
 		return response.data;
 	} catch (error) {

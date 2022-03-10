@@ -6,6 +6,8 @@
 	import { formattedDateFromTimeStamp } from '$lib/dates/format-date';
 
 	import RichText from '$components/fields/rich-text/rich-text.svelte';
+	import type { Nullable } from '@repo/shared';
+	import type { CaseStudy } from '@repo/db';
 
 	let formData = {
 		authors: [],
@@ -16,7 +18,7 @@
 	};
 
 	let contentLoading = true;
-	let caseStudies: [];
+	let caseStudies: Nullable<CaseStudy[]>;
 
 	onMount(async () => {
 		caseStudies = await fetchCaseStudies();
@@ -30,17 +32,18 @@
 		<h1>Case Studies</h1>
 		{#if contentLoading}
 			<span>loading...</span>
-		{:else}
+		{:else if caseStudies}
 			{#each caseStudies as caseStudy}
 				<article class="w-full bg-slate-400 rounded overflow-hidden p-4 text-sm">
 					<div class="flex flex-row flex-wrap w-full">
 						<span class="text-xs"
 							><span class="font-bold">Published:</span>
-							{formattedDateFromTimeStamp(caseStudy.published_at)}</span
+							{caseStudy.date_published &&
+								formattedDateFromTimeStamp(caseStudy.date_published)}</span
 						>
 						<span class="text-xs"
 							><span class="font-bold">Updated:</span>
-							{formattedDateFromTimeStamp(caseStudy.updated_at)}</span
+							{caseStudy.date_modified && formattedDateFromTimeStamp(caseStudy.date_modified)}</span
 						>
 					</div>
 
@@ -50,22 +53,20 @@
 
 					<span>{caseStudy.summary}</span>
 
-					<div>
-						<span>{caseStudy.author.name}</span>
-					</div>
-
 					<div class="flex flex-row flex-wrap w-full">
 						<span class="text-xs"
 							><span class="font-bold">Created:</span>
-							{formattedDateFromTimeStamp(caseStudy._created_at)}</span
+							{caseStudy._created_at && formattedDateFromTimeStamp(caseStudy._created_at)}</span
 						>
 						<span class="text-xs"
 							><span class="font-bold">Modified:</span>
-							{formattedDateFromTimeStamp(caseStudy._modified_at)}</span
+							{caseStudy._updated_at && formattedDateFromTimeStamp(caseStudy._updated_at)}</span
 						>
 					</div>
 				</article>
 			{/each}
+		{:else}
+			<div>Failed to load case studies.</div>
 		{/if}
 	</section>
 
