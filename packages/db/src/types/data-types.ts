@@ -11,7 +11,7 @@ export type Url = string;
 export type Slug = string;
 
 export type Image = {
-	src: string;
+	source: string;
 	alt: string;
 	caption?: string;
 	attribution?: string;
@@ -22,9 +22,9 @@ export type Image = {
 };
 
 export type EmbedVideo = {
-	src: Url;
+	source: Url;
 	title: string;
-	source: 'youtube' | 'vimeo';
+	provider: 'youtube' | 'vimeo';
 	details: {
 		width: number;
 		height: number;

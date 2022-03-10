@@ -8,6 +8,8 @@ import type {
 	Slug
 } from './data-types';
 
+// TODO: Add actual queries into a creation script
+
 /*
 TABLE case_study
 
@@ -37,6 +39,7 @@ note							text
 
 export type CaseStudy = {
 	id: Uuid;
+	is_published: boolean;
 	// meta
 	slug: Slug;
 	author: ForeignKey;
