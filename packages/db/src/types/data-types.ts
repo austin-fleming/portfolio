@@ -1,6 +1,6 @@
 export type Timestamp = string;
 
-export type ArticleContent = string;
+export type ArticleContent = object;
 
 export type ForeignKey = string;
 
@@ -29,9 +29,9 @@ export type EmbedVideo = {
 		width: number;
 		height: number;
 	};
-	options: {
-		autoplay: boolean;
-		mute: boolean;
+	options?: {
+		autoplay?: boolean;
+		mute?: boolean;
 	};
 };
 

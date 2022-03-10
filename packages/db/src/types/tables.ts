@@ -42,11 +42,11 @@ export type CaseStudy = {
 	is_published: boolean;
 	// meta
 	slug: Slug;
-	author: ForeignKey;
+	// author: ForeignKey;
 	_created_at: Timestamp;
 	_updated_at: Timestamp;
-	date_published: Timestamp;
-	date_modified: Timestamp;
+	date_published?: Timestamp;
+	date_modified?: Timestamp;
 	// content
 	title: string;
 	summary: string;
@@ -61,6 +61,8 @@ export type CaseStudy = {
 	categories: string[];
 	note?: string;
 };
+
+export type CaseStudyPostProperties = Omit<CaseStudy, 'id' | '_created_at' | '_updated_at'>;
 
 /*
 TABLE author
