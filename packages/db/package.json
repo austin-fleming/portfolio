@@ -8,6 +8,7 @@
     "test": "yarn jest --coverage"
   },
   "devDependencies": {
+    "@repo/shared": "*",
     "@types/jest": "^27.4.1",
     "esbuild": "^0.14.25",
     "jest": "^27.5.1",

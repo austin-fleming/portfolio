@@ -1,18 +1,18 @@
 {
-    "extends": "./../../tsconfig.json",
-    "compilerOptions": {
-        "target": "ES6",
-        "lib": [
-            "ESNEXT"
-        ],
-        "outDir": "dist",
-        "baseUrl": ".",
-        "declaration": true,
-        "sourceMap": true,
-        "rootDir": ".",
-    },
-    "include": [
-        "index.ts",
-        "src/**/*.ts"
-    ]
+  "extends": "./../../tsconfig.json",
+  "compilerOptions": {
+    "target": "ES6",
+    "lib": [
+      "ESNEXT"
+    ],
+    "outDir": "dist",
+    "baseUrl": ".",
+    "declaration": true,
+    "sourceMap": true,
+    "rootDir": ".",
+  },
+  "include": [
+    "index.ts",
+    "src/**/*.ts"
+  ]
 }
