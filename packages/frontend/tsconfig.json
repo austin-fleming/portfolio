@@ -54,6 +54,9 @@
 		"src/**/*.svelte",
 		"*.cjs",
 	],
+	"exclude": [
+		"tailwind.config.cjs"
+	],
 	"references": [
 		{
 			"path": "../shared"

@@ -1,14 +1,14 @@
 import { isJust } from './is-just';
 
-describe('is jest', () => {
-	it('returns false if not just', () => {
+describe('is just', () => {
+	it('returns false if null, undefined, or no parameters', () => {
 		expect(isJust(null)).toBe(false);
 		expect(isJust(undefined)).toBe(false);
 		// @ts-expect-error: testing empty call
 		expect(isJust()).toBe(false);
 	});
 
-	it('returns true if just', () => {
+	it('returns true for all other values', () => {
 		expect(isJust('')).toBe(true);
 		expect(isJust(0)).toBe(true);
 		expect(isJust(-0)).toBe(true);

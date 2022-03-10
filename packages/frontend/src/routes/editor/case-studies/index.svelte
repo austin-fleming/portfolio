@@ -5,6 +5,8 @@
 	import { onMount } from 'svelte';
 	import { formattedDateFromTimeStamp } from '$lib/dates/format-date';
 
+	import RichText from '$components/fields/rich-text/rich-text.svelte';
+
 	let formData = {
 		authors: [],
 		publishDate: '',
@@ -68,6 +70,10 @@
 	</section>
 
 	<section class="w-full">
+		<div class="field">
+			<RichText />
+		</div>
+
 		<form class="flex flex-col gap-8">
 			<div class="field">
 				<label for="id">ID</label>

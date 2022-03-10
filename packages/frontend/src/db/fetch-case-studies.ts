@@ -1,4 +1,5 @@
 import axios from 'axios';
+import type { CaseStudy } from '@repo/db';
 
 // TODO: DRY-ify
 type ServerResponse = {
@@ -17,7 +18,7 @@ export const fetchCaseStudies = async () => {
 	try {
 		const response = await axios.get<ServerResponse>(`${SERVER_HOST}/case-studies/`);
 		console.log({ response });
-		return response.data.data;
+		return response.data;
 	} catch (error) {
 		if (axios.isAxiosError(error)) {
 			if (error.response) {

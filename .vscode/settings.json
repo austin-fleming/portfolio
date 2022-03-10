@@ -17,6 +17,8 @@
     "editor.formatOnSave": true,
   },
   "cSpell.words": [
+    "cloin",
+    "Falsyable",
     "supabase",
     "sveltejs",
     "tailwindcss",

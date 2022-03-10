@@ -16,8 +16,10 @@
     "@babel/preset-env": "^7.16.11",
     "@playwright/test": "^1.19.1",
     "@repo/shared": "*",
+    "@repo/db": "*",
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
+    "@tailwindcss/typography": "^0.5.2",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/svelte": "^3.0.3",
     "@types/jest": "^27.4.1",
@@ -40,6 +42,16 @@
   },
   "type": "module",
   "dependencies": {
-    "axios": "^0.26.0"
+    "@tiptap/core": "^2.0.0-beta.174",
+    "@tiptap/extension-bubble-menu": "^2.0.0-beta.55",
+    "@tiptap/extension-code-block-lowlight": "^2.0.0-beta.68",
+    "@tiptap/extension-document": "^2.0.0-beta.15",
+    "@tiptap/extension-heading": "^2.0.0-beta.26",
+    "@tiptap/extension-image": "^2.0.0-beta.27",
+    "@tiptap/extension-typography": "^2.0.0-beta.20",
+    "@tiptap/html": "^2.0.0-beta.173",
+    "@tiptap/starter-kit": "^2.0.0-beta.183",
+    "axios": "^0.26.0",
+    "lowlight": "^2.5.0"
   }
 }
