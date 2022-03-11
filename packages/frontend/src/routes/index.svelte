@@ -1,8 +1,31 @@
-<script lang="ts">
-	import { isJust } from '@repo/shared';
+<script context="module" lang="ts">
+	export const prerender = true;
 
-	console.log('Import test:', isJust('hello'));
+	import type { Load } from '@sveltejs/kit';
+	import { getCaseStudies } from '$db/get-case-studies';
+	import type { CaseStudy } from '@repo/db';
+
+	export const load: Load = async () => {
+		const maybeCaseStudies = await getCaseStudies();
+
+		const caseStudiesData: CaseStudy[] = maybeCaseStudies || [];
+
+		// TODO: better error handle getter failing
+		return {
+			props: {
+				caseStudiesData
+			}
+		};
+	};
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+	import CaseStudyCard from '$components/case-study-card.svelte';
+	export let caseStudiesData: CaseStudy[];
+</script>
+
+<div>
+	{#each caseStudiesData as { title, summary, slug }}
+		<CaseStudyCard title="{title}" summary="{summary}" href="{`/case-studies/${slug}`}" />
+	{/each}
+</div>

@@ -12,12 +12,35 @@ const SERVER_HOST = import.meta.env.PROD
 	? import.meta.env.VITE_SERVER_HOST_PRODUCTION
 	: import.meta.env.VITE_SERVER_HOST_DEVELOPMENT;
 
+type GetCaseStudiesOptions = {
+	limit?: number;
+	offset?: number;
+	slug?: string;
+};
 // TODO: error checking
-export const fetchCaseStudies = async () => {
+export const getCaseStudies = async (options?: GetCaseStudiesOptions) => {
 	// TODO: sanitization
 	try {
-		const response = await axios.get<CaseStudy[]>(`${SERVER_HOST}/case-studies/`);
-		console.log({ response });
+		let queryUrl = `${SERVER_HOST}/case-studies`;
+
+		if (options?.limit || options?.offset || options?.slug) {
+			const { limit, offset, slug } = options;
+
+			queryUrl = `${queryUrl}?`;
+
+			if (limit) {
+				queryUrl = `${queryUrl}&limit=${limit}`;
+			}
+			if (offset) {
+				queryUrl = `${queryUrl}&offset=${offset}`;
+			}
+			if (slug) {
+				queryUrl = `${queryUrl}&slug=${slug}`;
+			}
+		}
+
+		const response = await axios.get<CaseStudy[]>(queryUrl);
+
 		return response.data;
 	} catch (error) {
 		if (axios.isAxiosError(error)) {
@@ -58,3 +81,9 @@ export const fetchCaseStudies = async () => {
 		return 'errored';
 	} */
 };
+
+/* export const fetchCaseStudyBySlug = async (slug: string) => {
+	try {
+		const response = await axios.get<CaseStudy>(`${SERVER_HOST}/case-studies?slug=${slug}`)
+	}
+} */

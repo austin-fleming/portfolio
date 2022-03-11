@@ -8,3 +8,24 @@
 		<slot />
 	</div>
 </fieldset>
+
+<style>
+	fieldset {
+		border: 0;
+		margin: 0;
+		min-width: 0;
+		padding: 0.01em 0 0 0;
+	}
+	legend {
+		display: table;
+		padding: 0;
+		float: left;
+		width: 100%;
+	}
+	legend + * {
+		clear: both;
+	}
+	:global(body):not(:-moz-handler-blocked) fieldset {
+		display: table-cell;
+	}
+</style>

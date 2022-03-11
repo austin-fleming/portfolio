@@ -1,7 +1,11 @@
+<script context="module" lang="ts">
+	export const prerender = false;
+</script>
+
 <script lang="ts">
 	import Fieldset from '$components/forms/field-set.svelte';
 	import FieldLabel from '$components/forms/field-label.svelte';
-	import { fetchCaseStudies } from '../../../db/fetch-case-studies';
+	import { getCaseStudies } from '$db/get-case-studies';
 	import { onMount } from 'svelte';
 	import { formattedDateFromTimeStamp } from '$lib/dates/format-date';
 
@@ -21,7 +25,7 @@
 	let caseStudies: Nullable<CaseStudy[]>;
 
 	onMount(async () => {
-		caseStudies = await fetchCaseStudies();
+		caseStudies = await getCaseStudies();
 		console.log(caseStudies);
 		contentLoading = false;
 	});

@@ -34,16 +34,19 @@
 		"checkJs": true,
 		"paths": {
 			"$components/*": [
-				"src/components/*"
+				"./src/components/*"
+			],
+			"$db/*": [
+				"./src/db/*"
 			],
 			"$lib": [
-				"src/lib"
+				"./src/lib"
 			],
 			"$lib/*": [
-				"src/lib/*"
+				"./src/lib/*"
 			],
 			"$styles/*": [
-				"src/styles/*"
+				"./src/styles/*"
 			]
 		}
 	},

@@ -1,0 +1,46 @@
+/*
+Color contrast against default background go as follows:
+- no suffix (high)
+- less
+- lesser
+- least
+*/
+/* TODO: https://tailwindcss.com/docs/customizing-colors#using-css-variables */
+:root {
+	--c-primary: theme('colors.neutral.900');
+	--c-primary--less: theme('colors.neutral.700');
+	--c-primary--lesser: theme('colors.neutral.400');
+
+	--c-background: theme('colors.neutral.50');
+	--c-background--less: theme('colors.neutral.200');
+	--c-background--lesser: theme('colors.neutral.300');
+
+	--c-accent-1: theme('colors.purple.800');
+	--c-accent-1--less: theme('colors.purple.700');
+	--c-accent-1--lesser: theme('colors.purple.600');
+
+	--c-ui-warn: #7d7100;
+	--c-ui-warn--bg: #f4f2de;
+
+	--c-ui-error: #7d0000;
+	--c-ui-error--bg: #f4e8e8;
+
+	--c-ui-success: #007d0d;
+	--c-ui-success--bg: #def4e0;
+
+	--c-ui-info: theme('colors.sky.800');
+	--c-ui-info--bg: theme('colors.sky.100');
+}
+:root.dark {
+	--c-primary: theme('colors.neutral.50');
+	--c-primary--less: theme('colors.neutral.200');
+	--c-primary--lesser: theme('colors.neutral.300');
+
+	--c-background: theme('colors.neutral.900');
+	--c-background--less: theme('colors.neutral.800');
+	--c-background--lesser: theme('colors.neutral.700');
+
+	--c-accent-1: theme('colors.purple.200');
+	--c-accent-1--less: theme('colors.purple.300');
+	--c-accent-1--lesser: theme('colors.purple.400');
+}

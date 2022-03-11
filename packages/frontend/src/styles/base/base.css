@@ -1,0 +1,14 @@
+@import './colors.css';
+
+html,
+body {
+	@apply text-primary;
+}
+
+html {
+	@apply scroll-smooth;
+}
+
+body {
+	@apply bg-background;
+}
