@@ -62,7 +62,7 @@
 		<PolyButton href="/case-studies/gift-platform" style="fill" color="primary"
 			>Gift Platform</PolyButton
 		>
-		<PolyButton href="/case-studies/gift-platform" style="fill" color="accent"
+		<PolyButton href="/case-studies/gift-platform" style="fill" interaction="arrow" color="accent"
 			>Gift Platform</PolyButton
 		>
 		<PolyButton href="/case-studies/gift-platform" style="fill" color="success"
@@ -79,8 +79,11 @@
 		<PolyButton href="/case-studies/gift-platform" style="outline" color="secondary"
 			>Gift Platform</PolyButton
 		>
-		<PolyButton href="/case-studies/gift-platform" style="outline" color="accent"
-			>Gift Platform</PolyButton
+		<PolyButton
+			href="/case-studies/gift-platform"
+			style="outline"
+			interaction="arrow"
+			color="accent">Gift Platform</PolyButton
 		>
 		<PolyButton href="/case-studies/gift-platform" style="outline" color="success"
 			>Gift Platform</PolyButton
@@ -96,7 +99,7 @@
 		<PolyButton href="/case-studies/gift-platform" style="text" color="secondary"
 			>Gift Platform</PolyButton
 		>
-		<PolyButton href="/case-studies/gift-platform" style="text" color="accent"
+		<PolyButton href="/case-studies/gift-platform" style="text" interaction="arrow" color="accent"
 			>Gift Platform</PolyButton
 		>
 		<PolyButton href="/case-studies/gift-platform" style="text" color="success"
@@ -149,8 +152,12 @@
 		<PolyButton href="/case-studies/gift-platform" style="text" color="secondary" isDisabled
 			>Gift Platform</PolyButton
 		>
-		<PolyButton href="/case-studies/gift-platform" style="text" color="accent" isDisabled
-			>Gift Platform</PolyButton
+		<PolyButton
+			href="/case-studies/gift-platform"
+			style="text"
+			color="accent"
+			interaction="arrow"
+			isDisabled>Gift Platform</PolyButton
 		>
 		<PolyButton href="/case-studies/gift-platform" style="text" color="success" isDisabled
 			>Gift Platform</PolyButton

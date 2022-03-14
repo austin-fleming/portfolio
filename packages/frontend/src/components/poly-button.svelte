@@ -45,10 +45,11 @@
 		class:round-base="{round === 'base'}"
 		class:round-full="{round === 'full'}"
 		class:disabled="{isDisabled}"
+		class:interaction-arrow="{interaction === 'arrow'}"
 	>
 		{#if interaction === 'arrow'}
 			<slot />
-			<span class="absolute right-0 top-0 bottom-0 w-[1em] h-full bg-pink-50">-></span>
+			<span class="btn-interaction-arrow">-></span>
 		{:else}
 			<slot />
 		{/if}
@@ -62,6 +63,10 @@
 		@apply block relative py-[0.75em] px-[1.75em];
 		/* standardize border to avoid dimensional differences between styles */
 		@apply border-[0.125em] border-solid border-transparent;
+	}
+
+	.disabled {
+		@apply pointer-events-none;
 	}
 
 	.size-small {
@@ -88,7 +93,7 @@
 			@apply bg-ui-error-bg text-ui-error;
 		}
 		&.color-success {
-			@apply bg-ui-success-bg text-ui-success;
+			@apply bg-ui-success text-ui-success-bg;
 		}
 
 		&.disabled {
@@ -146,5 +151,22 @@
 	}
 	.round-full {
 		@apply rounded-full;
+	}
+
+	.interaction-arrow {
+		@apply overflow-hidden transition-all duration-200;
+
+		& .btn-interaction-arrow {
+			@apply absolute top-0 right-0 bottom-0 flex flex-row justify-start items-center left-auto w-[1.75em] translate-x-full transition-transform duration-200;
+		}
+
+		&:hover {
+			/* @apply pl-[0.875em] pr-[2.625em]; */
+			@apply pl-[1em] pr-[2.5em];
+
+			& .btn-interaction-arrow {
+				@apply translate-x-0;
+			}
+		}
 	}
 </style>
