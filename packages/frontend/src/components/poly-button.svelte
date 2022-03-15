@@ -1,8 +1,10 @@
 <script lang="ts">
 	// REF: https://github.com/illright/attractions/blob/main/attractions/button/button.scss
+	/* eslint-disable unicorn/no-null */
 	import { cloin } from '$lib/cloin';
 
 	import type { Nullable } from '@repo/shared';
+	import A from './a.svelte';
 
 	export let prefetch = true;
 	export let isExternal = false;
@@ -24,12 +26,22 @@
 
 	type ButtonSize = 'lg' | 'base' | 'sm';
 	export let size: ButtonSize = 'base';
+
+	type ButtonType = 'button' | 'reset' | 'submit';
+	export let buttonType: ButtonType = 'button';
+
+	const relationships = cloin(
+		isExternal && 'noopener noreferrer',
+		prefetch && !isExternal && 'prefetch'
+	);
 </script>
 
 {#if href}
 	<a
 		class="btn"
 		href="{href}"
+		sveltekit:prefetch="{prefetch || null}"
+		rel="{relationships}"
 		class:color-primary="{color === 'primary'}"
 		class:color-secondary="{color === 'secondary'}"
 		class:color-accent="{color === 'accent'}"
@@ -46,6 +58,7 @@
 		class:round-full="{round === 'full'}"
 		class:disabled="{isDisabled}"
 		class:interaction-arrow="{interaction === 'arrow'}"
+		{...$$restProps}
 	>
 		{#if interaction === 'arrow'}
 			<slot />

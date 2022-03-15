@@ -1,8 +1,21 @@
 <script lang="ts">
+	import DynamicComponent from '$components/dynamic-component/dynamic-component.svelte';
+	import Modal from '$components/modal.svelte';
 	import PolyButton from '$components/poly-button.svelte';
+
+	let showModal = true;
 </script>
 
 <div class="flex flex-col justify-center items-center gap-4 min-h-screen py-12">
+	<button
+		on:click="{() => {
+			showModal = true;
+		}}">open</button
+	>
+	{#if showModal}
+		<Modal id="test-modal" bind:isOpen="{showModal}">Modal contents</Modal>
+	{/if}
+
 	<p>-- Href --</p>
 	<PolyButton href="/case-studies/gift-platform">Gift Platform</PolyButton>
 
