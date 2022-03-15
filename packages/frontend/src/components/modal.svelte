@@ -2,8 +2,6 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { blur } from 'svelte/transition';
 
-	import Noop from './noop.svelte';
-
 	export let id: string;
 	export let visibleOnMount = true;
 	export let isOpen = visibleOnMount;

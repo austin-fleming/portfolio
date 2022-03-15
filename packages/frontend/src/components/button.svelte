@@ -4,7 +4,6 @@
 	import { cloin } from '$lib/cloin';
 
 	import type { Nullable } from '@repo/shared';
-	import A from './a.svelte';
 
 	export let prefetch = true;
 	export let isExternal = false;
