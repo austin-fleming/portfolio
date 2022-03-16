@@ -7,11 +7,11 @@
 
 	export let prefetch = true;
 	export let isExternal = false;
-	export let href: Nullable<string>;
+	export let href: Nullable<string> = null;
 	export let isDisabled = false;
 	export let isSelected = false;
 
-	type ButtonAnimation = 'none' | 'arrow';
+	type ButtonAnimation = 'none' | 'arrow' | 'cancel';
 	export let interaction: ButtonAnimation = 'none';
 
 	type ButtonRound = 'none' | 'base' | 'full';
@@ -35,6 +35,7 @@
 	);
 </script>
 
+<!-- TODO: find a way to not repeat props of 'a' and 'button'. Svelte is about to merge 'svelte:element', so circle back. -->
 {#if href}
 	<a
 		class="btn"
@@ -56,23 +57,57 @@
 		class:round-base="{round === 'base'}"
 		class:round-full="{round === 'full'}"
 		class:disabled="{isDisabled}"
-		class:interaction-arrow="{interaction === 'arrow'}"
+		class:interaction-slide-in-icon="{interaction === 'arrow' || interaction === 'cancel'}"
 		{...$$restProps}
 	>
 		{#if interaction === 'arrow'}
 			<slot />
-			<span class="btn-interaction-arrow">-></span>
+			<span class="btn-interaction-slide-in-icon">-></span>
+		{:else if interaction === 'cancel'}
+			<slot />
+			<span class="btn-interaction-slide-in-icon">X</span>
 		{:else}
 			<slot />
 		{/if}
 	</a>
 {:else}
-	<button class="btn"><slot /></button>
+	<button
+		class="btn"
+		type="{buttonType}"
+		class:color-primary="{color === 'primary'}"
+		class:color-secondary="{color === 'secondary'}"
+		class:color-accent="{color === 'accent'}"
+		class:color-success="{color === 'success'}"
+		class:color-error="{color === 'error'}"
+		class:size-small="{size === 'sm'}"
+		class:size-base="{size === 'base'}"
+		class:size-large="{size === 'lg'}"
+		class:style-filled="{style === 'fill'}"
+		class:style-outline="{style === 'outline'}"
+		class:style-text="{style === 'text'}"
+		class:round-none="{round === 'none'}"
+		class:round-base="{round === 'base'}"
+		class:round-full="{round === 'full'}"
+		class:disabled="{isDisabled}"
+		class:interaction-slide-in-icon="{interaction === 'arrow' || interaction === 'cancel'}"
+		on:click
+		{...$$restProps}
+	>
+		{#if interaction === 'arrow'}
+			<slot />
+			<span class="btn-interaction-slide-in-icon">-></span>
+		{:else if interaction === 'cancel'}
+			<slot />
+			<span class="btn-interaction-slide-in-icon">X</span>
+		{:else}
+			<slot />
+		{/if}
+	</button>
 {/if}
 
 <style lang="scss">
 	.btn {
-		@apply block relative py-[0.75em] px-[1.75em];
+		@apply block relative py-[0.75em] px-[1.75em] text-center;
 		/* standardize border to avoid dimensional differences between styles */
 		@apply border-[0.125em] border-solid border-transparent;
 	}
@@ -165,10 +200,10 @@
 		@apply rounded-full;
 	}
 
-	.interaction-arrow {
+	.interaction-slide-in-icon {
 		@apply overflow-hidden transition-all duration-200;
 
-		& .btn-interaction-arrow {
+		& .btn-interaction-slide-in-icon {
 			@apply absolute top-0 right-0 bottom-0 flex flex-row justify-start items-center left-auto w-[1.75em] translate-x-full transition-transform duration-200;
 		}
 
@@ -176,7 +211,7 @@
 			/* @apply pl-[0.875em] pr-[2.625em]; */
 			@apply pl-[1em] pr-[2.5em];
 
-			& .btn-interaction-arrow {
+			& .btn-interaction-slide-in-icon {
 				@apply translate-x-0;
 			}
 		}
