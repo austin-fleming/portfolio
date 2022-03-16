@@ -21,11 +21,16 @@
 
 <script lang="ts">
 	import CaseStudyCard from '$components/case-study-card.svelte';
+	import PortfolioPreview from '$components/sections/portfolio-preview.svelte';
+	import Bio from '$components/sections/bio.svelte';
+	import Hero from '$components/sections/hero.svelte';
 	export let caseStudiesData: CaseStudy[];
 </script>
 
 <div>
-	{#each caseStudiesData as { title, summary, slug }}
-		<CaseStudyCard title="{title}" summary="{summary}" href="{`/case-studies/${slug}`}" />
-	{/each}
+	<Hero id="hero" />
+
+	<Bio id="bio" />
+
+	<PortfolioPreview id="case-studies" />
 </div>

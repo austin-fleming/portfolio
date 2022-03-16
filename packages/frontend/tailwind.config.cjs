@@ -37,6 +37,13 @@ module.exports = {
           },
         },
       },
+      zIndex: {
+        headerPrimary: 6000,
+        headerSecondary: 5999,
+        headerTertiary: 5000,
+        overlay: 8000,
+        modal: 9000,
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],
