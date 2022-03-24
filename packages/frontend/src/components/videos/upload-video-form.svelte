@@ -2,6 +2,8 @@
 	import type { Nullable } from '@repo/shared';
 	import { createUpload } from '@mux/upchunk';
 	import Button from '$components/button.svelte';
+	import { dev as isDevelopmentEnvironment } from '$app/env';
+	import axios from 'axios';
 
 	type FormState = 'READY' | 'UPLOADING' | 'PREPARING' | 'ERROR' | 'SUCCESS';
 	let formState: FormState = 'READY';
@@ -21,10 +23,80 @@
 	// 	console.log(fileUploadInput.files);
 	// };
 
-	const beginUpload = (file: File) => {
-		formState = 'UPLOADING';
+	const getUploadId = async () => {
+		try {
+			const serverHost = isDevelopmentEnvironment
+				? import.meta.env.VITE_SERVER_HOST_DEVELOPMENT
+				: import.meta.env.VITE_SERVER_HOST_PRODUCTION;
+			const endpoint = `${serverHost}/videos/upload`;
 
-		const endpoint = '';
+			const testData = {
+				description: 'Video description',
+				title: 'Test 6'
+			};
+
+			console.log('GETTING URL & ID');
+			const response = await axios.post(endpoint, testData).catch((error) => {
+				console.error('JSON ERROR:', error.toJSON());
+				if (error.response) {
+					console.error('RESPONSE:', error.response);
+					errorMessage = JSON.stringify({
+						DETAILS: error.response.data.details,
+						MESSAGE: error.response.data.message,
+						STATUS: error.response.data.status
+					});
+				} else if (error.request) {
+					console.error('REQUEST:', error.request);
+				} else {
+					console.error('Error -->', error.message);
+				}
+			});
+			console.log('RECEIVED:', response.data.url, response.data.id);
+
+			const { data, status, statusText } = response;
+
+			window.alert(JSON.stringify({ data, status }, null, '\t'));
+
+			if (!data.url) {
+				window.alert("didn't get a url back.");
+				throw new Error("Didn't get back a url.");
+			}
+
+			console.log('BEGINNING UPLOAD');
+			const upload = createUpload({
+				chunkSize: 5120,
+				endpoint: data.url,
+				file: selectedFile // Uploads the file in ~5mb chunks
+			});
+
+			upload.on('error', (error) => {
+				console.error('💥 🙀', error.detail);
+				window.alert('💥 🙀', error.detail);
+
+				formState = 'ERROR';
+			});
+
+			upload.on('progress', (progress) => {
+				uploadProgress = Math.floor(progress.detail);
+				console.log('PROGRESS:', uploadProgress);
+
+				formState = 'UPLOADING';
+			});
+
+			upload.on('success', () => {
+				console.log('🎉 UPLOADED!');
+				window.alert('🎉 UPLOADED!');
+
+				formState = 'PREPARING';
+			});
+		} catch (error) {
+			formState = 'ERROR';
+
+			if (error.response) {
+			}
+
+			errorMessage = errorMessage || 'Unexpected error caught.';
+		}
 	};
 
 	// TODO: there should be a more idiomatic way to detect "selectedFile" resetting.
@@ -34,20 +106,13 @@
 		formState = 'READY';
 	};
 
-	const handleFormSubmit = (event: SubmitEvent) => {
+	const handleFormSubmit = async (event: SubmitEvent) => {
 		try {
 			if (!selectedFile) throw new Error('Please select a file to upload.');
 
-			const { name, size } = selectedFile;
+			formState = 'UPLOADING';
 
-			window.alert(
-				JSON.stringify({
-					name,
-					size
-				})
-			);
-
-			beginUpload(selectedFile);
+			const id = await getUploadId();
 		} catch (error) {
 			console.error('Failed to upload due to:', error);
 			errorMessage = 'Something went wrong when trying to upload the video.';

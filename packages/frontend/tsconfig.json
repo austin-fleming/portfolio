@@ -58,7 +58,8 @@
 		"*.cjs",
 	],
 	"exclude": [
-		"tailwind.config.cjs"
+		"tailwind.config.cjs",
+		"./.svelte-kit"
 	],
 	"references": [
 		{

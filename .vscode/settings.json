@@ -19,10 +19,15 @@
   "cSpell.words": [
     "cloin",
     "Falsyable",
+    "Postgrest",
     "sonarjs",
     "supabase",
     "sveltejs",
     "tailwindcss",
+    "timestamptz",
     "VITE"
-  ]
+  ],
+  "[sql]": {
+    "editor.defaultFormatter": "bradymholt.pgformatter"
+  }
 }

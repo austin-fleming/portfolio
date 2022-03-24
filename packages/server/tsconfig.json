@@ -1,24 +1,33 @@
 {
-    "extends": "./../../tsconfig.json",
-    "compilerOptions": {
-        "target": "ES6",
-        "outDir": "./dist",
-        "baseUrl": ".",
-        "paths": {
-            "@db/*": [
-                "src/db/*"
-            ],
-            "@lib/*": [
-                "src/lib/*"
-            ],
-            "@middleware/*": [
-                "src/middleware/*"
-            ],
-            "@routes/*": [
-                "src/routes/*"
-            ]
-        }
-    },
-    "include": ["src/**/*", "./.eslintrc.js"],
-    "exclude": ["node_modules"]
+  "extends": "./../../tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "target": "ES6",
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@db/*": [
+        "src/db/*"
+      ],
+      "@lib/*": [
+        "src/lib/*"
+      ],
+      "@middleware/*": [
+        "src/middleware/*"
+      ],
+      "@routes/*": [
+        "src/routes/*"
+      ],
+      "@routes": [
+        "src/routes"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "./.eslintrc.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

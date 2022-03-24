@@ -11,14 +11,15 @@
 
 	import RichText from '$components/fields/rich-text/rich-text.svelte';
 	import type { Nullable } from '@repo/shared';
-	import type { CaseStudy } from '@repo/db';
+	// import type { CaseStudy } from '@repo/db';
+	import type { CaseStudy } from 'server/src/db/models';
 
 	let formData = {
 		authors: [],
-		publishDate: '',
-		updatedDate: '',
 		createdAt: '',
-		modifiedAt: ''
+		modifiedAt: '',
+		publishDate: '',
+		updatedDate: ''
 	};
 
 	let contentLoading = true;

@@ -14,7 +14,8 @@
     "dev::server": "cd packages/server && yarn dev",
     "frontend": "yarn workspace frontend",
     "server": "yarn workspace server",
-    "shared": "yarn workspace shared"
+    "shared": "yarn workspace @repo/shared",
+    "db": "yarn workspace @repo/db"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.13.0",

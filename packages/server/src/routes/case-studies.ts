@@ -1,11 +1,11 @@
 import express = require('express');
+import type { NextFunction } from 'express';
 const caseStudyRouter = express.Router();
-import { statusCodes } from '@lib/response-codes';
+import { HttpStatusCode } from '@lib/http-status-code';
 import { getCaseStudies, getCaseStudyById } from '@db/get-case-studies';
-import type { Uuid } from '@db/types';
+import type { Uuid, CaseStudyPostProperties, CaseStudy } from '@db/models';
 import { isMaybeUuid } from '@lib/validation/validate-uuid';
 import { postCaseStudy } from '@db/post-case-studies';
-import type { CaseStudyPostProperties, CaseStudy } from '@repo/db';
 import { forceToString, Nullable, parseIntegerFloored } from '@repo/shared';
 
 /* 
@@ -44,7 +44,7 @@ import { forceToString, Nullable, parseIntegerFloored } from '@repo/shared';
 */
 const ROUTE = '/case-studies';
 
-caseStudyRouter.get(ROUTE, async (request, response) => {
+const getCaseStudies = async (request: Request, response: Response, next: NextFunction) => {
 	const { limit, offset, slug } = request.query;
 
 	const parsedLimit = parseIntegerFloored(limit);
@@ -68,7 +68,7 @@ caseStudyRouter.get(ROUTE, async (request, response) => {
 	}
 
 	if (!data || data.length === 0) {
-		response.status(statusCodes.NOT_FOUND).json({
+		response.status(HttpStatusCode.NOT_FOUND).json({
 			message: 'Not Found. No case studies have been added... yet.'
 		});
 
@@ -80,46 +80,48 @@ caseStudyRouter.get(ROUTE, async (request, response) => {
 		response.status(error.status).json(error);
 	}
 
-	response.status(statusCodes.OK).json(data);
-});
+	response.status(HttpStatusCode.OK).json(data);
+};
+
+caseStudyRouter.get(ROUTE, getCaseStudies);
 
 caseStudyRouter.post(ROUTE, async (request, response) => {
-	const demoData: CaseStudyPostProperties = {
-		is_published: true,
-		slug: 'gift-platform-3',
-		title: 'Gift Platform-3',
-		summary: 'Guarding against the personal taste of a thousand politicians.',
+	const mockData: CaseStudyPostProperties = {
 		body: {
 			content:
 				'Abu Dhabi had a problem. Whenever a government representative needed to give a gift to a foreign representative, there were no guidelines in place. This lead to some gifts being exchanged that the leaders of the country felt were “unrepresentative of their national image”.'
 		},
+		categories: ['UI', 'UX'],
+		// This should probably be html or block content to allow links
+		client: 'ADGMO via SLASH',
+		completion_period: '2020',
 		feature_image: [
 			{
-				source: 'sample-source',
-				alt: 'sample-alt'
+				alt: 'sample-alt',
+				source: 'sample-source'
 			}
 		],
 		feature_video: [
 			{
-				source: 'sample-source',
-				title: 'a video',
-				provider: 'youtube',
 				details: {
-					width: 1920,
-					height: 1080
-				}
+					height: 1080,
+					width: 1920
+				},
+				provider: 'youtube',
+				source: 'sample-source',
+				title: 'a video'
 			}
 		],
-		completion_period: '2020',
+		is_published: true,
+		note: "Styling and implementation for this project are currently under NDA, so I'm only presenting logic details until the official launch.",
 		project_status: 'development',
-		// This should probably be html or block content to allow links
-		client: 'ADGMO via SLASH',
-		tools: ['Figma'],
-		categories: ['UI', 'UX'],
-		note: "Styling and implementation for this project are currently under NDA, so I'm only presenting logic details until the official launch."
+		slug: 'gift-platform-3',
+		summary: 'Guarding against the personal taste of a thousand politicians.',
+		title: 'Gift Platform-3',
+		tools: ['Figma']
 	};
 
-	const { data, error } = await postCaseStudy(demoData);
+	const { data, error } = await postCaseStudy(mockData);
 
 	if (error) {
 		response.status(error.status).json(error);
@@ -156,14 +158,14 @@ caseStudyRouter.get(`${ROUTE}/:id`, async (request, response) => {
 	}
 
 	if (!caseStudy) {
-		response.status(statusCodes.NOT_FOUND).json({
+		response.status(HttpStatusCode.NOT_FOUND).json({
 			message: 'Not Found. No case studies match the requested ID.'
 		});
 
 		return;
 	}
 
-	response.status(statusCodes.OK).json({
+	response.status(HttpStatusCode.OK).json({
 		data: caseStudy
 	});
 });
