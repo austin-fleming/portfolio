@@ -1,4 +1,4 @@
-import { ApiError } from './api-error';
+import { ApiError } from '@repo/shared';
 import type { PostgrestError } from '@supabase/supabase-js';
 
 export const getPostgrestError = (error: PostgrestError): ApiError => {

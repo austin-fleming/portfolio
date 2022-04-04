@@ -28,7 +28,7 @@
 			const serverHost = isDevelopmentEnvironment
 				? import.meta.env.VITE_SERVER_HOST_DEVELOPMENT
 				: import.meta.env.VITE_SERVER_HOST_PRODUCTION;
-			const endpoint = `${serverHost}/videos/upload`;
+			const endpoint = `${serverHost}/api/videos/upload`;
 
 			const testData = {
 				description: 'Video description',
@@ -140,7 +140,7 @@
 
 {#if formState === 'READY'}
 	<form
-		class="flex flex-col items-center max-w-[600px] m-auto"
+		class="flex flex-col items-center max-w-[600px] m-auto pt-16"
 		on:submit|preventDefault="{handleFormSubmit}"
 	>
 		<label for="upload" class="polybutton" class:sr-only="{selectedFile}">
@@ -185,6 +185,68 @@
 		<Button on:click="{handleFormReset}" style="text" color="error">Try again</Button>
 	</div>
 {/if}
+
+<form class="flex flex-col gap-4">
+	<label htmlfor="upload-form-title">
+		Title*
+		<input
+			id="upload-form-title"
+			type="text"
+			name="title"
+			placeholder="video title"
+			min="3"
+			max="150"
+			required
+		/>
+	</label>
+
+	<label htmlfor="upload-form-description">
+		Description*
+		<textarea
+			id="upload-form-description"
+			type="text"
+			name="description"
+			placeholder="video description"
+			rows="3"
+			required></textarea>
+	</label>
+
+	<label htmlfor="upload-form-caption">
+		Caption
+		<textarea id="upload-form-caption" type="text" name="caption" placeholder="caption" rows="2"
+		></textarea>
+	</label>
+
+	<label htmlfor="upload-form-attribution">
+		Attribution
+		<input id="upload-form-attribution" type="text" name="attribution" placeholder="attribution" />
+	</label>
+
+	<label htmlfor="upload-form-provider">
+		Provider
+		<input
+			id="upload-form-provider"
+			type="text"
+			name="provider"
+			placeholder="provider"
+			readonly
+			value="mux"
+			required
+		/>
+	</label>
+
+	<label htmlfor="upload-form-asset-data">
+		Provider
+		<textarea
+			id="upload-form-asset-data"
+			type="text"
+			name="asset_data"
+			placeholder="asset_data"
+			rows="4"
+			readonly></textarea>
+		<span>Asset data for this video will appear here once it has been generated.</span>
+	</label>
+</form>
 
 <style>
 	.polybutton {

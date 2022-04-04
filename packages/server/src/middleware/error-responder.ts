@@ -1,4 +1,4 @@
-import { ApiError, isApiError } from '@lib/error-handling/api-error';
+import { isApiError } from '@repo/shared';
 import type { ErrorRequestHandler, Response } from 'express';
 
 /* const getErrorMessage = (error: Error): string => {

@@ -41,6 +41,8 @@ module.exports = {
     "no-secrets/no-secrets": "error",
     "sort-keys": ["error", "asc", { "caseSensitive": true, "natural": true }],
     "sort-keys-fix/sort-keys-fix": "warn",
-    "unicorn/prefer-module": "off"
+    "unicorn/no-array-reduce": "warn",
+    "unicorn/prefer-module": "off",
+    "unicorn/prefer-object-from-entries": "off"
   },
 };

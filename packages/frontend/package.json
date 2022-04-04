@@ -23,6 +23,7 @@
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/svelte": "^3.0.3",
     "@types/jest": "^27.4.1",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.10.1",
     "@typescript-eslint/parser": "^5.10.1",
     "autoprefixer": "^10.4.2",
@@ -55,6 +56,7 @@
     "@tiptap/html": "^2.0.0-beta.173",
     "@tiptap/starter-kit": "^2.0.0-beta.183",
     "axios": "^0.26.0",
-    "lowlight": "^2.5.0"
+    "lowlight": "^2.5.0",
+    "uuid": "^8.3.2"
   }
 }

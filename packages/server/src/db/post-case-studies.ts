@@ -1,8 +1,7 @@
 import { supabase } from '@db/client';
-import { ApiError } from '@lib/error-handling/api-error';
-import type { DataOrError } from '@lib/error-handling/data-or-error';
 import { getPostgrestError } from '@lib/error-handling/get-postgrest-error';
 import type { CaseStudy, CaseStudySubmission } from '@repo/db/src/case-studies';
+import { ApiError, DataOrError } from '@repo/shared';
 
 export const postCaseStudy = async (
 	caseStudyData: CaseStudySubmission

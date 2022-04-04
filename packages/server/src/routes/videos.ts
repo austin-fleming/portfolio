@@ -1,10 +1,10 @@
 import express = require('express');
 import type { Asset, CreateUploadParams, ListAssetParams } from '@mux/mux-node/dist/video/domain';
-import { ApiError } from '@lib/error-handling/api-error';
 import { HttpStatusCode } from '@lib/http-status-code';
 import { muxClient } from '@db/mux-client';
 import * as yup from 'yup';
 import { supabase } from '@db/client';
+import { ApiError } from '@repo/shared';
 
 const videosRouter = express.Router();
 
@@ -76,27 +76,6 @@ videosRouter.get('/:id', async (request, response, next) => {
 	}
 });
 
-/* 
-TODO:
-Frontend form needs to capture metadata and send in request such as:
-  {
-    Title
-    Caption
-    Attribution
-  }
-
-Route needs to:
-  1. upload video
-  2. get metadata from video such as:
-    {
-      length,
-      size,
-      video url for playback
-    }
-  3. join together data from Mux with frontend metadata
-  4. write it to supabase
-  5. respond with supabase entry
-*/
 type VideoFormData = {
 	attribution?: string;
 	caption?: string;

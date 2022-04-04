@@ -11,9 +11,10 @@ Color contrast against default background go as follows:
 	--c-primary--less: theme('colors.neutral.700');
 	--c-primary--lesser: theme('colors.neutral.400');
 
-	--c-background: theme('colors.neutral.50');
-	--c-background--less: theme('colors.neutral.200');
-	--c-background--lesser: theme('colors.neutral.300');
+	/* --c-background: theme('colors.neutral.50'); */
+	--c-background: #fff;
+	--c-background--less: theme('colors.neutral.100');
+	--c-background--lesser: theme('colors.neutral.200');
 
 	--c-accent-1: theme('colors.purple.800');
 	--c-accent-1--less: theme('colors.purple.700');

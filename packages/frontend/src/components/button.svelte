@@ -107,7 +107,7 @@
 
 <style lang="scss">
 	.btn {
-		@apply block relative py-[0.75em] px-[1.75em] text-center;
+		@apply block relative py-[0.5em] px-[1.75em] text-center font-bold;
 		/* standardize border to avoid dimensional differences between styles */
 		@apply border-[0.125em] border-solid border-transparent;
 	}

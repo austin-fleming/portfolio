@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { ExpandedCaseStudy, CaseStudy } from '@repo/db';
+import type { CaseStudyExpanded, CaseStudy } from '@repo/db';
 import { SERVER_HOST } from '$lib/api/config';
 
 // TODO: DRY-ify

@@ -1,9 +1,8 @@
 import { supabase } from '@db/client';
 import type { ExpandedCaseStudy, CaseStudy } from '@repo/db/src/case-studies';
 
-import { ApiError } from '@lib/error-handling/api-error';
-import type { Nothing } from '@repo/shared';
-import type { DataOrError } from '@lib/error-handling/data-or-error';
+import { ApiError, DataOrError, Nothing } from '@repo/shared';
+
 /* 
 TODO: place all fetchers in db/api to more easily allow
 hot-swapping databases and normalizing their returns to a

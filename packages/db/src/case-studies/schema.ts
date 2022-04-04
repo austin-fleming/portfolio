@@ -61,8 +61,8 @@ export const caseStudySubmissionSchema = s.omit(caseStudySchema, [
 ]);
 export type CaseStudySubmission = s.Infer<typeof caseStudySubmissionSchema>;
 
-const caseStudyExpandedSchema = s.assign(
+export const caseStudyExpandedSchema = s.assign(
 	caseStudySchema,
 	s.object({ author: s.optional(authorSchema), feature_video: s.optional(videoSchema) })
 );
-type CaseStudyExpanded = s.Infer<typeof caseStudyExpandedSchema>;
+export type CaseStudyExpanded = s.Infer<typeof caseStudyExpandedSchema>;

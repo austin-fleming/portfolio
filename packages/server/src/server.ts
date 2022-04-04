@@ -1,7 +1,6 @@
 // HATEOAS
 import 'dotenv/config';
 import express = require('express');
-import { rateLimiter } from '@middleware/rate-limiter';
 import helmet from 'helmet';
 import cors = require('cors');
 import { jsonFromBody } from '@middleware/json-from-body';
@@ -9,7 +8,7 @@ import { HOST, PORT } from './config/constants';
 import { errorLogger } from '@middleware/error-logger';
 import { errorResponder } from '@middleware/error-responder';
 import { errorFallback } from '@middleware/error-fallback';
-import routes from '@routes';
+import apiRouter from '@routes';
 
 const app = express();
 
@@ -28,13 +27,12 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// app.use(rateLimiter) // TODO: setup per-route https://github.com/nfriedly/express-rate-limit
 app.disable('x-powered-by'); // NOTE: can remove if using helmet
 
 /* 
 ROUTES
 */
-app.use(routes);
+app.use(apiRouter);
 
 /* 
 ERROR HANDLING

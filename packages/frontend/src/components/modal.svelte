@@ -1,4 +1,5 @@
 <script lang="ts">
+	// REF: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
 	import { onDestroy, onMount } from 'svelte';
 	import { blur } from 'svelte/transition';
 

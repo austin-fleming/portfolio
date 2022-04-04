@@ -5,6 +5,6 @@
 
 <Header />
 
-<main>
+<main class="w-full min-h-screen h-full">
 	<slot />
 </main>

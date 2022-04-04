@@ -12,7 +12,7 @@
 	import RichText from '$components/fields/rich-text/rich-text.svelte';
 	import type { Nullable } from '@repo/shared';
 	// import type { CaseStudy } from '@repo/db';
-	import type { CaseStudy } from 'server/src/db/models';
+	import type { CaseStudy } from '@repo/db';
 
 	let formData = {
 		authors: [],

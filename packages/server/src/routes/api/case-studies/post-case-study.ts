@@ -3,9 +3,6 @@ import { HttpStatusCode } from '@lib/http-status-code';
 import { postCaseStudy } from '@db/post-case-studies';
 import { validateCaseStudySubmission } from '@repo/db/src/case-studies';
 import type { CaseStudySubmission } from '@repo/db/src/case-studies';
-import * as yup from 'yup';
-import { ApiError } from '@lib/error-handling/api-error';
-import type { DataOrError } from '@lib/error-handling/data-or-error';
 
 const router = express.Router();
 

@@ -37,6 +37,14 @@ module.exports = {
           },
         },
       },
+      minHeight: {
+        screenMinusHeader: `var(--l-screen-minus-header)`,
+      },
+      spacing: {
+        sitegap: '32px',
+        header: '65px',
+        screenMinusHeader: `var(--l-screen-minus-header)`,
+      },
       zIndex: {
         headerPrimary: 6000,
         headerSecondary: 5999,

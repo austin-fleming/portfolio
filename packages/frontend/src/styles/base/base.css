@@ -1,8 +1,9 @@
 @import './colors.css';
+@import './layout.css';
 
 html,
 body {
-	@apply text-primary;
+	@apply text-primary h-full;
 }
 
 html {

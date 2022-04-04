@@ -1,4 +1,4 @@
-import { ApiError } from '@lib/error-handling/api-error';
+import { ApiError } from '@repo/shared';
 import type { ErrorRequestHandler } from 'express';
 
 export const errorFallback: ErrorRequestHandler = (error, request, response, next) => {

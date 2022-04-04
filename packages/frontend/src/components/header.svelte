@@ -7,19 +7,18 @@
 		children: NavItem[];
 		label: string;
 	};
-	const navItems: Array<NavItem | ParentItem> = [
+	const navItems: Array<NavItem> = [
 		{
-			children: [
-				{
-					label: 'Case Studies',
-					to: '/case-studies'
-				},
-				{
-					label: 'Videos',
-					to: '/videos'
-				}
-			],
-			label: 'Editor'
+			label: 'Home',
+			to: '/'
+		},
+		{
+			label: 'Case Studies',
+			to: '/editor/case-studies'
+		},
+		{
+			label: 'Videos',
+			to: '/editor/videos'
 		}
 	];
 
@@ -28,17 +27,15 @@
 </script>
 
 <header
-	class="sticky left-0 top-0 right-0 bg-background border-b-4 border-solid border-primary z-headerPrimary"
+	class="fixed left-0 top-0 right-0 h-header bg-background bg-opacity-25 backdrop-blur-sm border-b-4 border-solid border-primary z-headerPrimary"
 >
-	<div class="w-full flex flex-row justify-between">
+	<div class="w-full flex flex-row justify-between h-full">
 		<div>Logo</div>
 
-		<nav>
-			<ul class="flex flex-row">
-				{#each navItems as navItem}
-					<li></li>
-				{/each}
-			</ul>
+		<nav class="flex flex-row gap-4 h-full items-center">
+			{#each navItems as navItem}
+				<a href="{navItem.to}" class="font-bold hover:text-accent1">{navItem.label}</a>
+			{/each}
 
 			<div>
 				<a href="/login">Log In</a>

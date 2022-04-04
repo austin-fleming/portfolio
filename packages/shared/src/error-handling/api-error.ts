@@ -1,4 +1,4 @@
-import { HttpStatusCode } from '@lib/http-status-code';
+import { HttpStatusCode } from './http-status-code';
 
 // Based on https://www.toptal.com/nodejs/node-js-error-handling
 export class ApiError extends Error {

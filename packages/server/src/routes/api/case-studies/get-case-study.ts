@@ -1,5 +1,4 @@
 import { getCaseStudies } from '@db/get-case-studies';
-import { ApiError } from '@lib/error-handling/api-error';
 import { HttpStatusCode } from '@lib/http-status-code';
 import express = require('express');
 
